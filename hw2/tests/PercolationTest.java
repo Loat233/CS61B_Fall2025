@@ -81,8 +81,52 @@ public class PercolationTest {
     // TODO: Using the given tests above as a template,
     //       write some more tests and delete the fail() line
     @Test
-    public void yourFirstTestHere() {
-        fail("Did you write your own tests?");
+    public void openTest() {
+        Percolation p = new Percolation(3);
+        p.open(1,1);
+        p.open(1,0);
+        p.open(0, 2);
+        p.open(1, 2);
+        p.open(2,1);
+
+        assertThat(p.isOpen(2,1)).isTrue();
+        assertThat(p.isOpen(1,1)).isTrue();
     }
 
+    @Test
+    public void isFullTest() {
+        Percolation p = new Percolation(3);
+
+        p.open(1, 0);
+        p.open(0, 2);
+        p.open(1, 2);
+        p.open(2, 1);
+
+        boolean result = p.isFull(1,1);
+        assertThat(result).isFalse();
+
+        result = p.isFull(2,2);
+        assertThat(result).isFalse();
+
+        result = p.isFull(1,2);
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    public void percolatesTest() {
+        Percolation p = new Percolation(3);
+
+        p.open(1, 0);
+        p.open(0, 2);
+        p.open(1, 2);
+        p.open(2, 1);
+
+        boolean result = p.percolates();
+        assertThat(result).isFalse();
+
+        p.open(1,1);
+
+        result = p.percolates();
+        assertThat(result).isTrue();
+    }
 }
