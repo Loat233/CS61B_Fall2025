@@ -1,6 +1,10 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.HashSet;
+
 import static com.google.common.truth.Truth.assertThat;
 
 /** Tests by Brendan Hu, Spring 2015, revised for 2016 by Josh Hug and for 2023 by Noah Adhikari */
@@ -114,4 +118,45 @@ public class TestBSTMap {
         assertThat(b.get("b")).isEqualTo("provolone");
     }
 
+    @Test
+    public void printInOrderTest() {
+        BSTMap<String, String> b = new BSTMap<>();
+        b.put("d", "parmesan");
+        b.put("a", "mozzarella");
+        b.put("c", "swiss");
+        b.put("b", "pepper jack");
+        b.put("e", "gouda");
+
+        ArrayList<String> a = b.arrayInOrder();
+        System.out.println(a.toString());
+    }
+
+    @Test
+    public void iteratorTest() {
+        BSTMap<String, String> b = new BSTMap<>();
+        b.put("d", "parmesan");
+        b.put("a", "mozzarella");
+        b.put("c", "swiss");
+        b.put("b", "pepper jack");
+        b.put("e", "gouda");
+
+        for (String s : b) {
+            System.out.println(s);
+        }
+    }
+
+    @Test
+    public void keySetTest() {
+        BSTMap<String, String> b = new BSTMap<>();
+        b.put("d", "parmesan");
+        b.put("a", "mozzarella");
+        b.put("c", "swiss");
+        b.put("b", "pepper jack");
+        b.put("e", "gouda");
+        HashSet<String> s = new HashSet<>();
+        s = (HashSet<String>) b.keySet();
+        for (String a : s) {
+            System.out.println(a);
+        }
+    }
 }
