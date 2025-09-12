@@ -70,6 +70,7 @@ public class NGramMapTest {
         TimeSeries academicWeight = ngm.weightHistory("academic", 1999, 2010);
         assertThat(academicWeight.get(1999)).isWithin(1E-7).of(969087.0 / 22668397698.0);
     }
+
     @Test
     public void testOnLargeFile() {
         // creates an NGramMap from a large dataset
@@ -99,5 +100,4 @@ public class NGramMapTest {
         double expectedFishPlusDogWeight1865 = (136497.0 + 75819.0) / 2563919231.0;
         assertThat(fishPlusDogWeight.get(1865)).isWithin(1E-10).of(expectedFishPlusDogWeight1865);
     }
-
-}  
+}

@@ -20,8 +20,8 @@ public class Main {
         */
 
         hns.startUp();
-        hns.register("history", new DummyHistoryHandler());
-        hns.register("historytext", new DummyHistoryTextHandler());
+        hns.register("history", new HistoryHandler(new NGramMap(TOP_14337_WORDS_FILE, TOTAL_COUNTS_FILE)));
+        hns.register("historytext", new HistoryTextHandler());
 
         System.out.println("Finished server startup! Visit http://localhost:4567/ngordnet_2a.html");
     }
